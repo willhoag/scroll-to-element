@@ -1,15 +1,31 @@
-scroll-to-element
-=====
+# scroll-to-element
 
-Smooth scrolls to element of the specified selector or element reference with optional offset, easing, and duration via [scroll-to](https://www.npmjs.com/package/scroll-to)
+Smooth scrolls to element of the specified selector or element reference with optional offset, scroll-positon, easing, and duration via [scroll-to](https://www.npmjs.com/package/scroll-to)
 
 [![NPM](https://nodei.co/npm/scroll-to-element.png)](https://nodei.co/npm/scroll-to-element/)
 
-EXAMPLE
-====
+## `scrollToElement(selector, <options>)`
+##### Valid options:
 
-`scrollToElement(selector, <options>)`
----
+###### offset : *number*
+
+> Add an additional offset to the final position. if
+> \> 0 then page is moved to the bottom otherwise the page is moved to the top.
+
+###### align : *string*
+
+> Alignment of the element in the resulting viewport. Can be
+> one of `'top'`, `'middle'` or `'bottom'`. Defaulting to `'top'`.
+
+###### ease : *string*
+
+> Easing function defaulting to "out-circ" (view [ease](https://github.com/component/ease) for more)
+
+###### duration : *number*
+
+> Animation duration defaulting to `1000`
+
+## EXAMPLE
 
 ```js
 var scrollToElement = require('scroll-to-element');
@@ -32,7 +48,6 @@ scrollToElement(elem, {
 });
 ```
 
-LICENSE
-=======
+## LICENSE
 
 MIT
