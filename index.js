@@ -1,8 +1,13 @@
 var scroll = require('scroll-to');
 
 function calculateScrollOffset(elem, additionalOffset, alignment) {
+  var body = document.body,
+      html = document.documentElement;
+
   var elemRect = elem.getBoundingClientRect();
-  var clientHeight = document.documentElement.clientHeight;
+  var clientHeight = html.clientHeight;
+  var documentHeight = Math.max( body.scrollHeight, body.offsetHeight, 
+                                 html.clientHeight, html.scrollHeight, html.offsetHeight );
 
   additionalOffset = additionalOffset || 0;
 
@@ -15,7 +20,9 @@ function calculateScrollOffset(elem, additionalOffset, alignment) {
     scrollPosition = elemRect.top;
   }
 
-  return scrollPosition + additionalOffset + window.pageYOffset;
+  var maxScrollPosition = documentHeight - clientHeight;
+  return Math.min(scrollPosition + additionalOffset + window.pageYOffset,
+                  maxScrollPosition);
 }
 
 module.exports = function (elem, options) {
