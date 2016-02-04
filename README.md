@@ -1,6 +1,6 @@
 # scroll-to-element
 
-Smooth scrolls to element of the specified selector or element reference with optional offset, scroll-positon, easing, and duration via [scroll-to](https://www.npmjs.com/package/scroll-to)
+Smooth scrolls to element of the specified selector or element reference with optional offset, scroll-positon, easing, and duration via [scroll-to](https://www.npmjs.com/package/scroll-to). Takes into account document height for elements low on the page.
 
 [![NPM](https://nodei.co/npm/scroll-to-element.png)](https://nodei.co/npm/scroll-to-element/)
 
