@@ -6,7 +6,7 @@ function calculateScrollOffset(elem, additionalOffset, alignment) {
 
   var elemRect = elem.getBoundingClientRect();
   var clientHeight = html.clientHeight;
-  var documentHeight = Math.max( body.scrollHeight, body.offsetHeight, 
+  var documentHeight = Math.max( body.scrollHeight, body.offsetHeight,
                                  html.clientHeight, html.scrollHeight, html.offsetHeight );
 
   additionalOffset = additionalOffset || 0;
@@ -27,6 +27,8 @@ function calculateScrollOffset(elem, additionalOffset, alignment) {
 
 module.exports = function (elem, options) {
   options = options || {};
-  if (typeof elem === 'string') elem = document.querySelector(elem);
+  if (typeof elem === 'string') {
+    elem = elem.match(/#\d.*/) ? document.querySelector('#\\3' + elem.substring(1)) : document.querySelector(elem);
+  }
   if (elem) return scroll(0, calculateScrollOffset(elem, options.offset, options.align), options);
 };
