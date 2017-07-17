@@ -28,11 +28,7 @@ function calculateScrollOffset(elem, additionalOffset, alignment) {
 module.exports = function (elem, options) {
   options = options || {};
   if (typeof elem === 'string') {
-    if (elem.match(/#\d.*/)) {
-      elem = document.querySelector('#\\3' + elem.substring(1))
-    } else {
-      elem = document.querySelector(elem);
-    }
+    elem = elem.match(/#\d.*/) ? document.querySelector('#\\3' + elem.substring(1)) : document.querySelector(elem);
   }
   if (elem) return scroll(0, calculateScrollOffset(elem, options.offset, options.align), options);
 };
