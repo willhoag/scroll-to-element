@@ -34,7 +34,7 @@ module.exports = function (elem, options) {
   if (typeof elem === 'string') elem = document.querySelector(elem);
 	if (elem) {
 		var elemRect = elem.getBoundingClientRect();
-		if (options.onlyIfNeeded && !isVisible(elemRect)) {
+		if (!options.onlyIfNeeded || (options.onlyIfNeeded && !isVisible(elemRect))) {
 		 return scroll(0, calculateScrollOffset(elemRect, options.offset, options.align), options);
 		}
 	}
