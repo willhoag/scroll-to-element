@@ -1,10 +1,9 @@
 var scroll = require('scroll-to');
 
-function calculateScrollOffset(elem, additionalOffset, alignment) {
+function calculateScrollOffset(elemRect, additionalOffset, alignment) {
   var body = document.body,
       html = document.documentElement;
 
-  var elemRect = elem.getBoundingClientRect();
   var clientHeight = html.clientHeight;
   var documentHeight = Math.max( body.scrollHeight, body.offsetHeight, 
                                  html.clientHeight, html.scrollHeight, html.offsetHeight );
@@ -25,8 +24,18 @@ function calculateScrollOffset(elem, additionalOffset, alignment) {
                   maxScrollPosition);
 }
 
+function isVisible(elemRect) {
+	var viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
+	return !(elemRect.bottom < 0 || elemRect.top - viewHeight >= 0);
+}
+
 module.exports = function (elem, options) {
   options = options || {};
   if (typeof elem === 'string') elem = document.querySelector(elem);
-  if (elem) return scroll(0, calculateScrollOffset(elem, options.offset, options.align), options);
+	if (elem) {
+		var elemRect = elem.getBoundingClientRect();
+		if (options.onlyIfNeeded && !isVisible(elemRect)) {
+			return scroll(0, calculateScrollOffset(elemRect, options.offset, options.align), options);
+		}
+	}
 };
