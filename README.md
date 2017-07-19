@@ -25,6 +25,10 @@ Smooth scrolls to element of the specified selector or element reference with op
 
 > Animation duration defaulting to `1000`
 
+###### onlyIfNeeded : *boolean*
+
+> If true, scrolls only if the element is out of the screen
+
 ## EXAMPLE
 
 ```js
