@@ -35,7 +35,7 @@ module.exports = function (elem, options) {
 	if (elem) {
 		var elemRect = elem.getBoundingClientRect();
 		if (options.onlyIfNeeded && !isVisible(elemRect)) {
-			return scroll(0, calculateScrollOffset(elemRect, options.offset, options.align), options);
+		 return scroll(0, calculateScrollOffset(elemRect, options.offset, options.align), options);
 		}
 	}
 };
