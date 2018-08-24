@@ -1,4 +1,4 @@
-var scroll = require('scroll-to');
+var scroll = require('./scroll-to');
 
 function calculateScrollOffset(elem, additionalOffset, alignment) {
   var body = document.body,

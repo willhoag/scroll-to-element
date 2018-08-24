@@ -1,7 +1,7 @@
 {
   "name": "scroll-to-element",
   "description": "Smooth scrolling to an element via selector or node reference",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "author": {
     "name": "Will Hoag",
     "email": "dev@willhoag.com"
@@ -9,12 +9,18 @@
   "bugs": {
     "url": "https://github.com/willhoag/scroll-to-element/issues"
   },
+  "scripts": {
+    "build": "browserify -e index.js -o build/scrollToElement.js -s scrollToElement",
+    "prepublish": "npm run build"
+  },
   "dependencies": {
-    "scroll-to": "0.0.2"
+    "component-tween": "^1.2.0",
+    "raf": "^3.4.0"
   },
   "keywords": [
     "animate",
     "scroll",
+    "tween",
     "smooth"
   ],
   "license": "MIT",
@@ -22,5 +28,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/willhoag/scroll-to-element.git"
+  },
+  "devDependencies": {
+    "browserify": "^16.2.2"
   }
 }
