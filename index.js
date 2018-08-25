@@ -6,7 +6,7 @@ function calculateScrollOffset(elem, additionalOffset, alignment) {
 
   var elemRect = elem.getBoundingClientRect();
   var clientHeight = html.clientHeight;
-  var documentHeight = Math.max( body.scrollHeight, body.offsetHeight, 
+  var documentHeight = Math.max( body.scrollHeight, body.offsetHeight,
                                  html.clientHeight, html.scrollHeight, html.offsetHeight );
 
   additionalOffset = additionalOffset || 0;
