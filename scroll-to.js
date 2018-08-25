@@ -1,4 +1,4 @@
-var Tween = require('component-tween');
+var Tween = require('./tween');
 var raf = require('raf');
 
 function scroll() {
