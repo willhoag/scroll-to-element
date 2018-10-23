@@ -1,6 +1,13 @@
 var ease = require('./ease');
 var Emitter = require('./emitter');
 
+function extend(obj, src) {
+  for (var key in src) {
+    if (src.hasOwnProperty(key)) obj[key] = src[key];
+  }
+  return obj;
+}
+
 function Tween(obj) {
   if (!(this instanceof Tween)) return new Tween(obj);
   this._from = obj;
@@ -12,7 +19,7 @@ Emitter(Tween.prototype);
 
 Tween.prototype.reset = function(){
   this.isArray = Object.prototype.toString.call(this._from) === '[object Array]';
-  this._curr = Object.assign({}, this._from);
+  this._curr = extend({}, this._from);
   this._done = false;
   this._start = Date.now();
   return this;
