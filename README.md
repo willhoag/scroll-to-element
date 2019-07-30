@@ -25,6 +25,11 @@ Smooth scrolls to element of the specified selector or element reference with op
 
 > Animation duration defaulting to `1000`
 
+##### Callback support
+
+> scrollToElement emits an `end` event when the scroll animation is complete, and can be optionally consumed to perform a callback.
+
+
 ## EXAMPLE
 
 ```js
@@ -37,6 +42,8 @@ scrollToElement('.className', {
 	offset: 0,
 	ease: 'out-bounce',
 	duration: 1500
+}).on('end', () => {
+	console.log('Done scrolling!');
 });
 
 // or if you already have a reference to the element
