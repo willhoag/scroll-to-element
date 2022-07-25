@@ -27,6 +27,9 @@ function calculateScrollOffset(elem, additionalOffset, alignment) {
 
 module.exports = function (elem, options) {
   options = options || {};
-  if (typeof elem === 'string') elem = document.querySelector(CSS.escape(elem));
+  if (typeof elem === 'string') {
+    elem = elem.split(' ').map(part => part.startsWith('#') ? '#' + CSS.escape(part.replace(/^#/, '')) : part).join(' ');
+    elem = document.querySelector(elem);
+  }
   if (elem) return scroll(0, calculateScrollOffset(elem, options.offset, options.align), options);
 };
